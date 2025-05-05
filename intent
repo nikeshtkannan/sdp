@@ -1,0 +1,38 @@
+public class MainActivity extends AppCompatActivity {
+    EditText username, password;
+    Button login;
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main);
+
+        username = findViewById(R.id.username);
+        password = findViewById(R.id.password);
+        login = findViewById(R.id.login);
+
+        login.setOnClickListener(v -> {
+            Intent intent = new Intent(MainActivity.this, WelcomeActivity.class);
+            intent.putExtra("USERNAME", username.getText().toString());
+            startActivity(intent);
+        });
+    }
+}
+
+
+
+
+
+
+
+public class WelcomeActivity extends AppCompatActivity {
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_welcome);
+        
+        TextView welcomeText = findViewById(R.id.welcomeText);
+        String username = getIntent().getStringExtra("USERNAME");
+        welcomeText.setText("Welcome " + username);
+    }
+}
