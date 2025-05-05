@@ -1,0 +1,57 @@
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="16dp">
+
+    <EditText
+        android:id="@+id/num1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:inputType="number"/>
+
+    <EditText
+        android:id="@+id/num2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:inputType="number"/>
+
+    <Button
+        android:id="@+id/btnAdd"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Add"/>
+
+    <TextView
+        android:id="@+id/result"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+</LinearLayout>
+
+
+
+
+
+  public class MainActivity extends AppCompatActivity {
+    EditText num1, num2;
+    Button btnAdd;
+    TextView result;
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main);
+
+        num1 = findViewById(R.id.num1);
+        num2 = findViewById(R.id.num2);
+        btnAdd = findViewById(R.id.btnAdd);
+        result = findViewById(R.id.result);
+
+        btnAdd.setOnClickListener(v -> {
+            int n1 = Integer.parseInt(num1.getText().toString());
+            int n2 = Integer.parseInt(num2.getText().toString());
+            result.setText("Result: " + (n1 + n2));
+        });
+    }
+}
